@@ -1,0 +1,96 @@
+<!--
++------------------------------------------------------------------------------+
+|                                                                              |
+|  debug.html                                                                  |
+|                                                                              |
+|  This file is part of "sld-tree-generator". (this program)                   |
+|                                                                              |
++------------------------------------------------------------------------------+
+|                                                                              |
+|  Copyright (C) 2016 by Andreas Pollhammer                                    |
+|                                                                              |
+|  Email: apoll500@gmail.com                                                   |
+|  Web:   http://www.andreaspollhammer.com                                     |
+|                                                                              |
++------------------------------------------------------------------------------+
+|                                                                              |
+|  Licensed under GPLv3:                                                       |
+|                                                                              |
+|  This program is free software: you can redistribute it and/or modify        |
+|  it under the terms of the GNU General Public License as published by        |
+|  the Free Software Foundation, either version 3 of the License, or           |
+|  (at your option) any later version.                                         |
+|                                                                              |
+|  This program is distributed in the hope that it will be useful,             |
+|  but WITHOUT ANY WARRANTY; without even the implied warranty of              |
+|  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the               |
+|  GNU General Public License for more details.                                |
+|                                                                              |
+|  You should have received a copy of the GNU General Public License           |
+|  along with this program.  If not, see <http://www.gnu.org/licenses/>.       |
+|                                                                              |
++------------------------------------------------------------------------------+
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
+  </head>
+  <body bgcolor="#FFFFFF" color="#000000" style="color:#000000;background-color:#FFFFFF;">
+    <div style="font-family:arial;font-size:11pt;">
+        <b>Drawing trees:</b><br>
+        <a href="JavaScript:gon()">links</a>
+        <a href="JavaScript:gow()">walker</a>
+        <a href="JavaScript:go0()">null</a>
+        <a href="JavaScript:gox()">zentriert</a><br>
+        <b>Step by step:</b><br>
+        <a href="JavaScript:gox_debug(1)">debug +1</a>
+        <a href="JavaScript:gox_debug(-1)">-1</a>
+        <a href="JavaScript:gox_debug(10)">+10</a>
+        <a href="JavaScript:gox_debug(-10)">-10</a>
+        <a href="JavaScript:gox_debug(50)">+50</a>
+        <a href="JavaScript:gox_debug(-50)">-50</a>
+        <a href="JavaScript:gox_debug_reset()">reset</a><br>
+        <!--
+        <a href="JavaScript:parent.askProlog('prologAnswer',null);">answer</a><br><br>
+        -->
+        &nbsp;&nbsp;&nbsp;
+        <a href="JavaScript:svg()">svg</a>    
+    </div>
+    <script>
+        function gon()
+        {
+            new parent.theProcessingObject.NaiveAlgo().posNodes(parent.globalRootTree,true);
+        }
+        function gow()
+        {
+            new parent.theProcessingObject.MyWalker().posNodes(parent.globalRootTree,true);
+        }
+        function go0()
+        {
+            new parent.theProcessingObject.SetAllNull().posNodes(parent.globalRootTree,true);
+        }
+        function gox()
+        {
+            new parent.theProcessingObject.MyCenterAlgo().posNodes(parent.globalRootTree,true);
+        }
+        var debug_steps=0;
+        function gox_debug(steps)
+        {
+            debug_steps+=steps;
+            new parent.theProcessingObject.MyWalker().posNodes_debug(parent.globalRootTree,true,debug_steps);
+        }
+        function gox_debug_reset()
+        {
+            debug_steps=0;
+        }
+        function svg()
+        {
+            var a=parent.globalRootTree.export_svg();
+            this.document.writeln(a);
+            alert(a);
+        }
+    </script>
+  </body>
+</html>

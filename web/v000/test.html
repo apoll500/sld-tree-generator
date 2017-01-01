@@ -1,0 +1,78 @@
+<!--
++------------------------------------------------------------------------------+
+|                                                                              |
+|  test.html                                                                   |
+|                                                                              |
+|  This file is part of "sld-tree-generator". (this program)                   |
+|                                                                              |
++------------------------------------------------------------------------------+
+|                                                                              |
+|  Copyright (C) 2016 by Andreas Pollhammer                                    |
+|                                                                              |
+|  Email: apoll500@gmail.com                                                   |
+|  Web:   http://www.andreaspollhammer.com                                     |
+|                                                                              |
++------------------------------------------------------------------------------+
+|                                                                              |
+|  Licensed under GPLv3:                                                       |
+|                                                                              |
+|  This program is free software: you can redistribute it and/or modify        |
+|  it under the terms of the GNU General Public License as published by        |
+|  the Free Software Foundation, either version 3 of the License, or           |
+|  (at your option) any later version.                                         |
+|                                                                              |
+|  This program is distributed in the hope that it will be useful,             |
+|  but WITHOUT ANY WARRANTY; without even the implied warranty of              |
+|  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the               |
+|  GNU General Public License for more details.                                |
+|                                                                              |
+|  You should have received a copy of the GNU General Public License           |
+|  along with this program.  If not, see <http://www.gnu.org/licenses/>.       |
+|                                                                              |
++------------------------------------------------------------------------------+
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <script src="http.js"></script>
+    <div style="padding:30px;color:#000000;background-color:#FFEEAA;">
+      <div align="center">
+        <form name="f1" method="GET" action="">
+          <span style="font-family:arial;font-size:18pt;">
+            <b>SLD-Baum</b>
+            <br><br>
+            <nobr>
+              ?- <input type="text" name="goal" value="" style="font-family:arial;font-size:18pt;">
+              <input type="button" name="b1" value="submit" onClick="goalButtonSubmit();" style="font-family:arial;font-size:18pt;">
+              <br><br>
+              Max.Tiefe: <select name="depth" style="font-family:arial;font-size:18pt;">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3" selected>3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              <br><br>
+              Hier das Programm eingeben:
+              <br><textarea name="program" cols="50" rows="20"></textarea>
+          </span>
+          </nobr>
+        </form>
+      </div>
+    </div>
+    <hr>
+    <div id="Out" style="padding:30px;color:#FFFFFF;background-color:#3377AA;">
+      <pre>Output</pre>
+    </div>
+    <hr>
+    &nbsp;&nbsp;&nbsp;<a href="JavaScript:about();">About</a>
+  </body>
+</html>

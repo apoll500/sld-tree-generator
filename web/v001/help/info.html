@@ -1,0 +1,108 @@
+<!--
++------------------------------------------------------------------------------+
+|                                                                              |
+|  info.html                                                                   |
+|                                                                              |
+|  This file is part of "sld-tree-generator". (this program)                   |
+|                                                                              |
++------------------------------------------------------------------------------+
+|                                                                              |
+|  Copyright (C) 2016 by Andreas Pollhammer                                    |
+|                                                                              |
+|  Email: apoll500@gmail.com                                                   |
+|  Web:   http://www.andreaspollhammer.com                                     |
+|                                                                              |
++------------------------------------------------------------------------------+
+|                                                                              |
+|  Licensed under GPLv3:                                                       |
+|                                                                              |
+|  This program is free software: you can redistribute it and/or modify        |
+|  it under the terms of the GNU General Public License as published by        |
+|  the Free Software Foundation, either version 3 of the License, or           |
+|  (at your option) any later version.                                         |
+|                                                                              |
+|  This program is distributed in the hope that it will be useful,             |
+|  but WITHOUT ANY WARRANTY; without even the implied warranty of              |
+|  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the               |
+|  GNU General Public License for more details.                                |
+|                                                                              |
+|  You should have received a copy of the GNU General Public License           |
+|  along with this program.  If not, see <http://www.gnu.org/licenses/>.       |
+|                                                                              |
++------------------------------------------------------------------------------+
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../css/styles.css">
+	</head>
+	<body bgcolor="#FFFFFF" color="#000000" style="color:#000000;background-color:#FFFFFF;">
+        <div class="topbox"><a href="info.html">Startseite</a> | <a href="help.html">Anleitung</a> | <a href="contact.html">Kontakt</a></div>
+		<h1>Berechnen und Anzeigen<br>von SLD-Bäumen</h1>
+        <p>
+            Mit dem Web-Interface können Sie SLD-Bäume generieren und anzeigen lassen.
+            <br>
+            Die SLD-Bäume werden am Server von SWI-Prolog berechnet und im Browser-Fenster mittels JavaScript/processing.js angezeigt.
+            <br><br>
+			Um dieses Dokument in einem neuen Fenster zu öffnen klicken Sie bitte hier: <a href="info.html" target="_blank">info.html</a>. (Wenn Sie das Dokument außerhalb dieses Frames anzeigen funktionieren allerdings eine Links zu JavaScript-Funktionen nicht.)
+            <br><br>
+            Sollten Sie weitergehende Fragen haben, kontaktieren Sie mich bitte <a href="contact.html">hier</a>.
+        </p>
+        <p>
+            <div class="infobox">
+                <b>Anleitung:</b><br><br>
+                <a href="help.html">Hier</a> finden Sie eine kurze <a href="help.html">Anleitung</a>, wie Sie mit diesem Web-Interface SLD-Bäume generieren und anzeigen lassen können.
+                <br><br>
+                <b>Beispiele:</b><br><br>
+                Einige <a href="examples.html">Beispiel Programme und Anfragen</a>.
+                <br><br>
+                <!--<b>Prolog-Tutorial:</b><br><br>-->
+            </div>
+            <!--
+            <div class="infobox">
+                <b>Weitere Informationen:</b><br><br>
+                Was ist Prolog?:<br>
+                Was sind SLD-Bäume?:
+            </div>
+            -->
+            <div class="infobox">
+                <b>Software-Pakete:</b><br>
+                <li><a href="http://www.swi-prolog.org" target="_blank">SWI-Prolog</a></li>
+                <li><a href="http://www.processingjs.org" target="_blank">processing.js</a></li>
+                <br>
+            </div>
+        </p>
+		<h2>Bemerkungen und Einschränkungen</h2>
+        <h3>Antwort-Substitution</h3>
+        <p>
+            Die korrekte Antwort-Substitution eines erfolgreichen Astes wird durch Doppelklick auf den Blattknoten angezeigt. Beim Doppelklick auf einen inneren Knoten, sowie beim Doppelklick auf einen Blattknoten eines erfolglosen Astes, wird als Antwort ebenfalls die Substitution (beschränkt auf die Eingabevariablen) angezeigt. Im Falle eines inneren Knotens handelt es sich dabei um die bis dahin berechnete (möglicherweise unvollständige) Antwort. Im Fall eines erfolglosen Astes wird ebenfalls die entsprechende Substitution als Antwort angezeigt. Dabei handelt es sich allerdings um keine gültige Antwort.
+        </p>
+        <h3>Knoten Limit</h3>
+        <p>
+            Die Anzahl der Knoten, die in einem Berechnungsshritt generiert werden ist auf 1000 beschränkt. Sie können einen Baum mit mehr als 1000 Knoten berechnen indem Sie den Baum schrittweise aufbauen. Falls zu einem Knoten nicht alle Kinder erzeugt werden, kann es notwendig sein die Anzahl Levels, die in einem Schritt berechnet werden zu reduzieren.
+        </p>
+        <h3>Cuts</h3>
+        <p>
+            Cuts werden nicht berücksichtigt. Es wird immer der ganze Baum (unter Berücksichtigung  der maximalen Anzahl an Levels und Knoten) berechnet.
+            <br><br>
+            Das <code><b>If->Then;Else</b></code> Konstrukt wird interpretiert als <code><b>If,!,Then;Else</b></code>. Dies ist nicht korrekt weil im Else-Fall ebenfalls ein Cut erfolgen sollte. Da Cuts jedoch nicht berücksichtigt werden, wird der Baum unabhängig von <code><b>If</b></code> immer für den Then- und ebenso für den Else-Fall berechnet. Dadurch kann ein Ast fälschlicherweise mit 'true' enden und eine falsche Antwort-Substitution liefern.
+        </p>
+        <h3>Eingebaute Prädikate</h3>
+        <p>
+			Eingebaute Prädikate sind nur teilweise verfügbar.
+            <br><br>
+            Anstelle der Klausel-Nummer wird für eingebaute Prädikate die Nummer 0 in der Graphik angezeigt.
+            <br><br>
+            Verfübar sind:<br>
+            <code>';', ',', '=', is, </code> Term-Vergleiche, Arithmetische Vergleiche, ...
+            <br><br>
+            Nicht verfügbar sind:<br>
+            Meta-Prädikate, Ein-/Ausgabe, ...
+            <br><br>
+            Arithmetishe Funktionen können verwenet werden.
+            <br><br>
+            Listen können verwendet werden in <code>[ ]</code>-Schreibweise. Der <code>'.'</code>-Operator kann nicht verwendet werden.
+        </p>
+	</body>
+</html>

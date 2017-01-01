@@ -1,0 +1,190 @@
+<!--
++------------------------------------------------------------------------------+
+|                                                                              |
+|  help.html                                                                   |
+|                                                                              |
+|  This file is part of "sld-tree-generator". (this program)                   |
+|                                                                              |
++------------------------------------------------------------------------------+
+|                                                                              |
+|  Copyright (C) 2016 by Andreas Pollhammer                                    |
+|                                                                              |
+|  Email: apoll500@gmail.com                                                   |
+|  Web:   http://www.andreaspollhammer.com                                     |
+|                                                                              |
++------------------------------------------------------------------------------+
+|                                                                              |
+|  Licensed under GPLv3:                                                       |
+|                                                                              |
+|  This program is free software: you can redistribute it and/or modify        |
+|  it under the terms of the GNU General Public License as published by        |
+|  the Free Software Foundation, either version 3 of the License, or           |
+|  (at your option) any later version.                                         |
+|                                                                              |
+|  This program is distributed in the hope that it will be useful,             |
+|  but WITHOUT ANY WARRANTY; without even the implied warranty of              |
+|  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the               |
+|  GNU General Public License for more details.                                |
+|                                                                              |
+|  You should have received a copy of the GNU General Public License           |
+|  along with this program.  If not, see <http://www.gnu.org/licenses/>.       |
+|                                                                              |
++------------------------------------------------------------------------------+
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../css/styles.css">
+	</head>
+	<body bgcolor="#FFFFFF" color="#000000" style="color:#000000;background-color:#FFFFFF;">
+        <div class="topbox"><a href="info.html">Startseite</a> | <a href="help.html">Anleitung</a> | <a href="contact.html">Kontakt</a></div>
+		<h1>Anleitung (Web-Applikation)</h1>
+		<p>
+			Hier finden Sie eine kurze Anleitung, wie Sie mit diesem Web-Interface SLD-Bäume generieren und anzeigen lassen können. Sollten Sie weitergehende Fragen haben, kontaktieren Sie mich bitte <a href="contact.html">hier</a>.
+            <br><br>
+			Die aktuelle Dokumentation finden Sie im Ordner <code><b>docu/</b></code>.
+		</p>
+            <div class="infobox">
+                <b>Berechnung und Anzeige von SLD-Bäumen</b>
+                <br><br>
+                Schritt 1: <a href="keys.html">Ein Prolog Programm eingeben</a>
+                <br>
+                Schritt 2: <a href="mouse.html">Eine Anfrage an Prolog stellen</a>
+                <br>
+                Schritt 3: <a href="mouse.html">Navigation durch den SLD-Baum</a>
+                <br>
+            </div>
+            <div class="infobox">
+                <b>Steurung der Web-Applikation:</b>
+                <br><br>
+                <a href="keys.html">Tastaturbefehle</a>
+                <br>
+                <a href="mouse.html">Mouse-Interaktion</a>
+                <br>
+            </div>
+		<p>
+			<h2>Inhalt:</h2>
+			<ul>
+				<li><a href="">Allgemeines</a>
+					<ul>
+						<li><a href="">Anforderungen</a></li>
+						<li><a href="">Einschränkungen</a></li>
+					</ul>
+				</li>
+				<li><a href="">Berechnung und Anzeige von SLD-Bäumen</a>
+					<ul>
+						<li><a href="">Schritt 1 - Programm eingeben</a></li>
+						<li><a href="">Schritt 2 - Anfrage an Prolog stellen</a></li>
+						<li><a href="">Schritt 3 - Navigation durch den SLD-Baum</a></li>
+					</ul>
+				</li>
+				<li><a href="">Steurung der Web-Applikation</a>
+					<ul>
+						<li><a href="">Alle Tastaturbefehle</a></li>
+						<li><a href="">Interaktion mit der Mouse</a></li>
+						<li><a href="">Allgemeine Bemerkungen</a></li>
+					</ul>
+				</li>
+				<li><a href="">Beispiel-Programme</a></li>
+				<!--
+				<li><a href="">Darstellung von Bäumen</a>
+					<ul>
+						<li><a href="">Text-Modus</a></li>
+						<li><a href="">Graphische Darstellung</a>
+							<ul>
+								<li><a href="">Linksbündige Darstellung</a></li>
+								<li><a href="">Knoten zentrieren</a></li>
+								<li><a href="">Algorithmus von Walker</a></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				-->
+				<li><a href="contact.html">Kontakt</a></li>
+			</ul>
+		</p>
+		<h2>Allgemeines</h2>
+		<h2>Berechnung und Anzeige von SLD-Bäumen</h2>
+		<h3>Schritt 1 - Programm eingeben</h3>
+		<p>
+			Um SLD-Bäume zu berechnen müssen Sie zuerst ein Prolog-Programm eingeben. Dazu klicken Sie rechts oben (oder hier) auf den Button "bearbeiten".<br><br>
+			<a class="nav2" href="JavaScript:parent.rframe.edit_program();">bearbeiten</a><br><br>
+			Es öffnet sich ein Fenster indem Sie ein Prolog Programm eintippen können. Durch Klicken auf den Button "übernehmen", wird das eingegebene Programm an den Server gesendet und dort geprüft. Falls das Programm Syntaktisch korrekt ist, wird das Programm-Listing auf der rechten Seite aktualisiert. Tritt ein Fehler auf, so wird rechts "fail." angezeigt. In diesem Fall sollten Sie Ihr Programm auf eine fehlerhafte Syntax prüfen.<br><br>
+			Wurde Ihr eingegebenes Programm korrekt übernommen, können Sie das Eingabefnster mit Klick auf <img src="../pwin/images/simple/t6.png"> schließen.
+		</p>
+		<h3>Schritt 2 - Anfrage an Prolog stellen</h3>
+		<p>
+			Wird Ihr Programm im Frame auf der rechten Seite korrekt wiedergegeben, so können Sie Eine Anfrage an Prolog stellen. Falls Ihr Programm nicht angezeigt wird, kann auch ein Klick auf den Button "aktualisieren" helfen.<br><br>
+			Am oberen Rand des Fensters sehen Sie eine Eingabezeile. Klicken Sie rechts neben <b>?-</b> um Ihre Anfrage einzugeben. Das "?-" ist dabei nicht erneut einzugeben. Durch Durücken der Entertaste oder einen Klick auf den Button "senden" wird die Anfrage an den Server gesendet und der SLD-Baum wird berechnet. Der Baum sollte daraufhin bis zu einer maximalen Ebne angezeigt werden. D.h. größere (oder unendlihe) Bäume werden nach unten abgeschnitten. Abgeschnittene Äste sind daran zu erkennen, dass sie in Blattknoten mit der Bezeichnung "..." enden.<br><br>
+			Beispiel: <span class="lnode">&nbsp;&nbsp;&nbsp;&nbsp;. . .</span>.<br><br>
+			Solche Blätter sind also keine tatsächlichen Blätter des SLD-Baumes, sondern stehen stellvertretend für einen Teilbaum, der nicht berechnet wurde und daher auch nicht angezeigt wird.<br><br>
+			Sie können nun von Knoten zu Knoten durch den Baum navigieren und schrittweisefehlende Teilbäume berechnen.
+		</p>
+		<h3>Schritt 3 - Navigation durch den SLD-Baum</h3>
+		<p>
+			Die Interaktion ist sowohl mittels Mouse als auch mit der Tastatur möglich. Eine vollständige Liste aller Tastaturbefehle finden Sie <a href="">hier</a>.
+		</p>
+		<h4>Einen Knoten auswählen:</h4>
+		<p>
+			Ein Knoten des SLD-Baumes wird jeweils rot umrandet dargestellt. Es ist dies der aktuell ausgewählte Knoten. Sie können einen beliebigen anderen Knoten auswählen, indem Sie mit der Mouse auf den gewünschten Knoten klicken. Mit der Tastatur können Sie die Pfeiltasten benutzen, um einen anderen Knoten auszuwählen.
+			<div class ="mybox">Die Taste <span class="skey">UP</span> bewegt die rote Umrandung zum übergeordneten Knoten (Elternknoten).</div>
+			<div class ="mybox">Mit der Taste <span class="skey">DOWN</span> wechseln Sie zum ersten (linkesten) Kind eines Knoten.</div>
+			<div class ="mybox">Und mit den Tasten <span class="skey">LEFT</span> und <span class="skey">RIGHT</span> können Sie innerhalb einer Ebene zum jeweils linken bzw. rechten Nachbarknoten wechseln.</div>
+		</p>
+		<h4>Teilbäume berechnen:</h4>
+		<p>
+			Um einen fehlenden Teilbaum (Teil-Abschnitt) des SLD-Baumes zu berechnen können Sie den betreffenden Blattknoten (<span class="lnode">&nbsp;&nbsp;&nbsp;&nbsp;. . .</span>) doppelt anklicken.<br><br>Oder Sie navigieren mit der Tastatur zu diesem Knoten und drücken entweder die <span class="skey">ENTER</span>-Taste oder die Pfeiltaste <span class="skey">DOWN</span>.
+		</p>
+		<h2>Steurung der Web-Applikation</h2>
+		<h3>Tastaturbefehle und "Fokus"</h3>
+		<p>
+			Beachten Sie, dass Tastatureingaben nur dann wie unten beschrieben verarbeitet werden, wenn der Zeichenbereich innerhalb des Fensters (also der Bereich in dem die graphische Ausgabe des Baumes erfolgt) den Fokus hat. Ist der Bereich abgedunkelt, so werden alle Tastatureingaben vom Browser auf die übliche Weise verarbeitet und nicht an die Web-Applikation weitergeleitet. Durch Drücken der Pfeiltatsten können sie so zum Beispiel dieses Dokument scrollen, ohne, dass dies Auswirkungen auf die Darstellung des SLD-Baumes hat. Wollen Sie die Darstellung des SLD-Baumes mittels der Pfeiltasten verschieben (scrollen), so muss der Fokus an den Zeichenbereich gerichtet werden. Dies geschieht durch Anklicken des Bereichs oder durch wiederholtes Drücken von <span class="skey">TAB</span>, falls keine Mouse zur Verfügung steht.
+		</p>
+		<h3>Alle Tastaturbefehle</h3>
+		<p>
+			<!--<h4>Pfeiltasten:</h4>-->
+			<div class ="mybox"><span class="key">UP</span>: Den Elternknoten des aktuell ausgewählten Knotens auswählen.</div>
+			<div class ="mybox"><span class="key">DOWN</span>: Das erste (linkeste) Kind des aktuell ausgewählten Knotens auswählen.</div>
+			<div class ="mybox"><span class="key">LEFT</span>: Den linken Nachbarknoten des aktuellen Knotens auswählen.</div>
+			<div class ="mybox"><span class="key">RIGHT</span>: Den rechten Nachbarknoten des aktuellen Knotens auswählen.</div>
+			<div class ="mybox"><span class="key">ENTER</span>: Aktion zum ausgewählten Knoten ausführen. Entweder Anzeige der Antwortsubstitution oder Erweiterung des Baumes um einen neu berechneten Teilbaum.</div>
+			<div class ="mybox"><span class="key">i</span>: Nach oben scrollen. (fein)</div>
+			<div class ="mybox"><span class="key">m</span>: Nach unten scrollen. (fein)</div>
+			<div class ="mybox"><span class="key">j</span>: Nach links scrollen. (fein)</div>
+			<div class ="mybox"><span class="key">k</span>: Nach rechts scrollen. (fein)</div>
+			<div class ="mybox"><span class="key">I</span>: Nach oben scrollen. (grob)</div>
+			<div class ="mybox"><span class="key">M</span>: Nach unten scrollen. (grob)</div>
+			<div class ="mybox"><span class="key">J</span>: Nach links scrollen. (grob)</div>
+			<div class ="mybox"><span class="key">K</span>: Nach rechts scrollen. (grob)</div>
+			<div class ="mybox"><span class="key">+</span>: Vergrößert die Darstellung (Zoom).</div>
+			<div class ="mybox"><span class="key">-</span>: Verkleinert die Darstellung (Zoom).</div>
+			<div class ="mybox"><span class="key">o</span> oder <span class="key">O</span>: Setzt die Scroll-Position zurück.</div>
+			<div class ="mybox"><span class="key">x</span> oder <span class="key">X</span>: Entfernt den Teilbaum ab dem ausgewählten Knoten.</div>
+			<div class ="mybox"><span class="key">c</span> oder <span class="key">C</span>: Schneidet den Teilbaum oberhalb des ausgewählten Knotens ab, wobei der Teilbaum erhalten bleibt und alle restlichen Knoten gelöscht werden.</div>
+			<div class ="mybox"><span class="key">f</span> oder <span class="key">F</span>: Falls sich er ausgewählte Knoten außerhalb des sichtbaren Bereiches befindet wird die Darstellung soweit gescrollt, damit der ausgewählte Knoten sichtbar wird.</div>
+			<div class ="mybox"><span class="key">h</span> oder <span class="key">H</span>: Zeigt diesen Hilfe-Text an.</div>
+			<div class ="mybox"><span class="key">p</span> oder <span class="key">P</span>: Öffnet das Fenster zum bearbeiten des Prolog-Programms.</div>
+			<div class ="mybox"><span class="key">s</span> oder <span class="key">S</span>: Öffnet das Fenster zum bearbeiten der Einstellungen.</div>
+			<!--
+			<div class ="mybox"><span class="key">t</span> oder <span class="key">T</span>: Umschalten zum Text-Modus.</div>
+			<div class ="mybox"><span class="key">g</span> oder <span class="key">G</span>: Umschalten zum Graphik-Modus.</div>
+			-->
+		</p>
+		<h3>Interaktion mit der Mouse</h3>
+		<p>
+			x
+		</p>
+		<h3>Menü-Funktionen</h3>
+		<p>
+			x
+		</p>
+		<h3>Allgemeine Bemerkungen</h3>
+		<p>
+			Einschränkung bez. Bedienbarkeit mittels Tastatur.<br><br>
+			Einschränkung bez. Barrierefreiheit. 
+		</p>
+		<h2>Beispiel-Programme</h2>
+		<h2>Kontakt</h2>
+	</body>
+</html>

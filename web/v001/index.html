@@ -1,0 +1,255 @@
+<!--
++------------------------------------------------------------------------------+
+|                                                                              |
+|  index.html                                                                  |
+|                                                                              |
+|  This file is part of "sld-tree-generator". (this program)                   |
+|                                                                              |
++------------------------------------------------------------------------------+
+|                                                                              |
+|  Copyright (C) 2016 by Andreas Pollhammer                                    |
+|                                                                              |
+|  Email: apoll500@gmail.com                                                   |
+|  Web:   http://www.andreaspollhammer.com                                     |
+|                                                                              |
++------------------------------------------------------------------------------+
+|                                                                              |
+|  Licensed under GPLv3:                                                       |
+|                                                                              |
+|  This program is free software: you can redistribute it and/or modify        |
+|  it under the terms of the GNU General Public License as published by        |
+|  the Free Software Foundation, either version 3 of the License, or           |
+|  (at your option) any later version.                                         |
+|                                                                              |
+|  This program is distributed in the hope that it will be useful,             |
+|  but WITHOUT ANY WARRANTY; without even the implied warranty of              |
+|  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the               |
+|  GNU General Public License for more details.                                |
+|                                                                              |
+|  You should have received a copy of the GNU General Public License           |
+|  along with this program.  If not, see <http://www.gnu.org/licenses/>.       |
+|                                                                              |
++------------------------------------------------------------------------------+
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+  </head>
+  <body leftmargin="0" topmargin="0" onresize="mainwin_resize()" style="background-color:#3377AA";>
+    <div onMousemove="movecontrol2(event)" onMouseUp="mbuttonup2(event)" style="position:absolute;width:100%;height:100%;">
+      <script src="pwin/pwin.js"></script>
+      <script src="parser/dfa.js"></script>
+      <script src="parser/reader.js"></script>
+      <script src="parser/treepars.js"></script>
+      <script src="jsmain/js_events.js"></script>
+      <script src="jsmain/receive.js"></script>
+      <script src="jsmain/http.js"></script>
+      <script src="canvas/treedata/loadjson.js"></script>
+      <script>
+        ini_boxes(10,"simple");
+
+        //Globale Variablen
+        var program="";//p(1).\np(2).\np(X):-p(2).";
+        var goal="";//p(A).";
+        var depth="1";
+        var tree="";
+        var autosave="0";
+        var mode="ASCII-Text";
+
+        //Processing Variablen
+        var screenx=window.innerWidth;
+        var screeny=window.innerHeight-47;
+		var rframew=260;
+        
+        function hide_element(id)
+        {
+            document.getElementById(id).style.visibility="hidden";
+        }
+        function show_element(id)
+        {
+            closeAll();
+            document.getElementById(id).style.visibility="visible";
+        }
+        function edit_program()
+        {
+            openbox("Programm eingeben","dialogue/program.html",160,100,600,400,"#4C391E","#CCCCCC","#CCCCCC","#CCCCCC");
+            hide_element("MENU01");
+        }
+        function show_debug()
+        {
+            var d=openbox("Debug","dialogue/debug.html",170,132,200,200,"#4C391E","#CCCCCC","#CCCCCC","#CCCCCC");
+            centerbox(d);
+            hide_element("MENU01");
+        }
+        function show_help()
+        {
+            var d=openbox("Hilfe","help/info.html",100,100,600,400,"#AACC99","#AACC99","#AACC99","#AACC99");
+            centerbox(d);
+            hide_element("MENU01");
+        }
+        function show_settings()
+        {
+            var d=openbox("Einstellungen","dialogue/settings.html",100,100,600,400,"#4C391E","#CCCCCC","#CCCCCC","#CCCCCC");
+            centerbox(d);
+            hide_element("MENU01");
+        }
+        function setMode(newMode)
+        {
+            mode=newMode;
+            document.getElementById("NAVBAR_T03").innerHTML=mode;
+            hide_element("MENU02");
+            document.getElementById("Out").style.visibility="hidden";
+            document.getElementById("ProcessingCanvas").style.visibility="hidden";
+            if(mode=="ASCII-Text")document.getElementById("Out").style.visibility="visible";
+            else if(mode=="Graphik-Modus")document.getElementById("ProcessingCanvas").style.visibility="visible";
+        }
+        function closeAll()
+        {
+            hide_element("MENU01");
+            hide_element("MENU02");
+        }
+      </script>
+
+      <div id="Out" style="position:absolute;top:47px;left:0px;padding:30px;color:#FFFFFF;background-color:#3377AA;visibility:visible;">
+        <pre>Output</pre>
+      </div>
+      
+	  <!--Canvas-->
+      <div id="ProcessingCanvas" style="position:absolute;top:43px;left:0px;visibility:hidden;">
+        <script src="canvas/processing/processing.js"></script>
+        <canvas id="main_canvas" ondblclick="onLMBdblclk()" data-processing-sources="canvas/main.pde canvas/events.pde canvas/animation/properties.pde canvas/animation/animator.pde canvas/treedata/treedata.pde canvas/treedata/posnodes.pde canvas/math/math.pde"></canvas>
+      </div>
+	  
+      <!--RightFrame-->
+      <div id="RFRAME" style="position:absolute;right:0px;bottom:0px;width:200px;height:500px;padding:0px;background-color:#000000;border-top:solid 3px #EEEEEE;border-bottom:solid 3px #AAAAAA;font-family:arial;">
+        <iframe src="dialogue/clauses.html" name="rframe" width="100%" height="100%" frameborder="0" scrolling="auto" style="width:100%;height:100%;">NO IFRAME?</iframe>
+      </div>
+	  
+      <!--Menu01-->
+      <div id="NAVBAR" style="padding:10px;background-color:#CCCCCC;border-top:solid 3px #EEEEEE;border-bottom:solid 3px #AAAAAA;font-family:arial;">
+        <a class="nav2" href="JavaScript:show_element('MENU01')">Menu</a>
+      </div>
+      <div id="MENU01" style="position:absolute;top:0px;left:0px;padding-left:10px;padding-top:10px;padding-right:10px;visibility:hidden;background-color:#CCCCCC;border-top:solid 3px #EEEEEE;border-bottom:solid 3px #AAAAAA;font-family:arial;">
+        <a class="nav" href="JavaScript:hide_element('MENU01')">Menu</a><hr>
+        <a class="menuitem" href="JavaScript:show_settings();">Einstellungen</a>
+        <a class="menuitem" href="JavaScript:edit_program();">Programm eingeben</a>
+        <a class="menuitem" href="JavaScript:show_debug();">Debug</a>
+        <a class="menuitem" href="JavaScript:show_help();">Hilfe</a>
+      </div>
+
+      <!--Menu02-->
+      <div id="NAVBAR_T02" style="position:absolute;top:0px;left:60px;width:60px;padding:10px;border-top:solid 3px #EEEEEE;font-family:arial;">
+        <a class="nav2" href="JavaScript:show_element('MENU02')">Modus</a>
+      </div>
+      <div id="MENU02" style="position:absolute;top:0px;left:60px;padding-left:10px;padding-top:10px;padding-right:10px;visibility:hidden;background-color:#CCCCCC;border-top:solid 3px #EEEEEE;border-bottom:solid 3px #AAAAAA;font-family:arial;">
+        <a class="nav" href="JavaScript:hide_element('MENU02')">Modus</a><hr>
+        <a class="menuitem" href="JavaScript:setMode('ASCII-Text');">ASCII-Text</a>
+        <a class="menuitem" href="JavaScript:setMode('Graphik-Modus');">Graphik-Modus</a>
+      </div>
+
+      <!--Menu03-->
+      <div id="NAVBAR_T03" style="position:absolute;top:0px;left:130px;width:160px;padding:10px;border-top:solid 3px #EEEEEE;font-family:arial;font-size:12pt;">
+        ASCII-Text
+      </div>
+
+      <form name="form1" action="JavaScript:send_query()">
+      <div id="NAVBAR_T04" style="position:absolute;top:5px;left:260px;width:660px;height:32px;padding:0px;margin:0px;background-color:#FFFFFF;border:solid 1px #000000;border-radius:5px;font-family:arial;font-size:12pt;">
+          <nobr>
+            <span style="font-family:arial;font-size:18pt;">?- </span>
+            <input name="goal" onkeyup="onkey();" style="width:550px;height:90%;font-size:18pt;border:none;">
+            &nbsp;&nbsp;&nbsp;<a id="savelink" class="navb" href="JavaScript:send_query();">senden</a>
+          </nobr>
+      </div>
+      </form>
+      <script>
+        function send_query()
+        {
+            globalGraphicParameter.iwin.visible=false;
+        
+            goal=this.document.form1.goal.value;
+            if(mode=="ASCII-Text")
+            {
+                askProlog("asciiTree",null);
+            }
+            else
+            {
+                askProlog("jsonTree",null);
+            }
+        }
+        function onkey()
+        {
+            goal=this.document.form1.goal.value;
+        }
+      </script>
+
+      <div id="NAVBAR_T05" style="position:absolute;top:0px;left:930px;width:60px;padding:4px;border-top:solid 3px #EEEEEE;font-family:arial;">
+        <a id="pos0" class="navh" href="JavaScript:reset_display();">&nbsp;<img src="images/home.png" border="0" align="top">&nbsp;</a>
+      </div>
+
+      <script>
+        function reset_display()
+        {
+            scroll_to_home();
+            reset_nodes();
+            theProcessingObject.findSelctedNode();
+        }
+        
+        function scroll_to_home()
+        {
+            //Scrolling zuruecksetzen.
+            globalGraphicParameter.scrollx=0;
+            globalGraphicParameter.scrolly=0;
+            //Scaling zuruecksetzten.
+            globalGraphicParameter.scale=1;
+            //setting the focus.
+			global_DOM_main_canvas.focus();
+        }
+        
+        function reset_nodes()
+        {
+            //Ggf. verschobene Knoten neu positionieren.
+            if(globalRootTree)new theProcessingObject.MyWalker().posNodes(globalRootTree,false);
+            globalGraphicParameter.iwin.visible=false;
+			//Ausgewaehlten Knoten suchen
+			//theProcessingObject.findSelctedNode();
+        }
+
+        show_help();
+        //setMode('Graphik-Modus');
+        
+        //Doppelclick Event fehlt in Processing.js, daher Event-Handling hier.
+        function onLMBdblclk()
+        {
+            theProcessingObject.onKeyEnter();
+        }
+        
+        //Wheel Event fehlt in Processing.js.
+        function onWheel(e)
+        {
+            var s=e.deltaY;
+            theProcessingObject.dozoom(-s/Math.abs(s));
+        }
+        document.getElementById("main_canvas").addEventListener("wheel",onWheel);
+      </script>
+
+    </div>
+    
+    <div id="cover" style="position:absolute;top:0px;left:0px;width:100%;height:100%;visibility:visible;background-color:#000000;color:#FFFFFF;font-family:arial;font-size:22pt;">
+      <div align="center">loading...</div>
+    </div>
+    
+    <script>
+      function js_start()
+      {
+        document.getElementById("cover").style.visibility="hidden";
+        document.getElementById("cover").style.width="256px";
+        document.getElementById("cover").style.height="64px";
+        setMode('Graphik-Modus');
+		mainwin_resize();
+      }
+    </script>
+    
+ </body>
+</html>

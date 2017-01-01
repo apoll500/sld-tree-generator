@@ -1,0 +1,81 @@
+<!--
++------------------------------------------------------------------------------+
+|                                                                              |
+|  program.html                                                                |
+|                                                                              |
+|  This file is part of "sld-tree-generator". (this program)                   |
+|                                                                              |
++------------------------------------------------------------------------------+
+|                                                                              |
+|  Copyright (C) 2016 by Andreas Pollhammer                                    |
+|                                                                              |
+|  Email: apoll500@gmail.com                                                   |
+|  Web:   http://www.andreaspollhammer.com                                     |
+|                                                                              |
++------------------------------------------------------------------------------+
+|                                                                              |
+|  Licensed under GPLv3:                                                       |
+|                                                                              |
+|  This program is free software: you can redistribute it and/or modify        |
+|  it under the terms of the GNU General Public License as published by        |
+|  the Free Software Foundation, either version 3 of the License, or           |
+|  (at your option) any later version.                                         |
+|                                                                              |
+|  This program is distributed in the hope that it will be useful,             |
+|  but WITHOUT ANY WARRANTY; without even the implied warranty of              |
+|  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the               |
+|  GNU General Public License for more details.                                |
+|                                                                              |
+|  You should have received a copy of the GNU General Public License           |
+|  along with this program.  If not, see <http://www.gnu.org/licenses/>.       |
+|                                                                              |
++------------------------------------------------------------------------------+
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
+  </head>
+  <body bgcolor="#FFFFFF" color="#000000" style="margin-top:0px;margin-left:0px;color:#000000;background-color:#CCCCCC;">
+    <form name="form1">
+      <textarea id="progtxt" name="prog" rows="20" onkeyup="new_input();" style="width:100%;height:100%;"></textarea>
+    </form>
+    <br>
+    <div align="right">
+      <a id="savelink" class="nav2" href="JavaScript:save_program();">übernehmen</a>&nbsp;&nbsp;&nbsp;
+    </div>
+    <script>
+        this.document.form1.prog.value=parent.program;
+        function save_program()
+        {
+            parent.program=this.document.form1.prog.value;
+            document.getElementById("savelink").className="nav2";
+            if(parent.global_DOM_clauses_win)parent.global_DOM_clauses_win.getClauseList();
+        }
+        function new_input()
+        {
+            if(parent.autosave=="1")
+            {
+                save_program();
+            }
+            else
+            {
+                document.getElementById("savelink").className="nav";
+            }
+        }
+        document.getElementById("progtxt").onkeydown=function(e)
+                {
+                    if(e.keyCode==9 || e.which==9)
+                    {
+                        e.preventDefault();
+                        var start=this.selectionStart;
+                        this.value=this.value.substring(0,this.selectionStart)+"    "+this.value.substring(this.selectionEnd);
+                        this.selectionEnd=start+4;
+                        return false;
+                    }
+                    return true;
+                }
+    </script>
+  </body>
+</html>

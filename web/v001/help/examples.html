@@ -1,0 +1,97 @@
+<!--
++------------------------------------------------------------------------------+
+|                                                                              |
+|  examples.html                                                               |
+|                                                                              |
+|  This file is part of "sld-tree-generator". (this program)                   |
+|                                                                              |
++------------------------------------------------------------------------------+
+|                                                                              |
+|  Copyright (C) 2016 by Andreas Pollhammer                                    |
+|                                                                              |
+|  Email: apoll500@gmail.com                                                   |
+|  Web:   http://www.andreaspollhammer.com                                     |
+|                                                                              |
++------------------------------------------------------------------------------+
+|                                                                              |
+|  Licensed under GPLv3:                                                       |
+|                                                                              |
+|  This program is free software: you can redistribute it and/or modify        |
+|  it under the terms of the GNU General Public License as published by        |
+|  the Free Software Foundation, either version 3 of the License, or           |
+|  (at your option) any later version.                                         |
+|                                                                              |
+|  This program is distributed in the hope that it will be useful,             |
+|  but WITHOUT ANY WARRANTY; without even the implied warranty of              |
+|  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the               |
+|  GNU General Public License for more details.                                |
+|                                                                              |
+|  You should have received a copy of the GNU General Public License           |
+|  along with this program.  If not, see <http://www.gnu.org/licenses/>.       |
+|                                                                              |
++------------------------------------------------------------------------------+
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../css/styles.css">
+	</head>
+	<body bgcolor="#FFFFFF" color="#000000" style="color:#000000;background-color:#FFFFFF;">
+        <div class="topbox"><a href="info.html">Startseite</a> | <a href="help.html">Anleitung</a> | <a href="contact.html">Kontakt</a></div>
+		<h1>Berechnen und Anzeigen<br>von SLD-Bäumen</h1>
+        <p>
+            Einige Beispiel Programme und Anfragen.<br><br>
+            Beispiel 1:<br>
+            <a href="JavaScript:p01()">Programm laden und Anfrage senden.</a><br><br>
+            Beispiel 2:<br>
+            <a href="JavaScript:p02()">Programm laden und Anfrage senden.</a><br><br>
+            Beispiel 3:<br>
+            <a href="JavaScript:p03()">Programm laden und Anfrage senden.</a><br><br>
+            Beispiel 4:<br>
+            <a href="JavaScript:p04()">Programm laden und Anfrage senden.</a><br><br>
+            Beispiel 5:<br>
+            <a href="JavaScript:p05()">Programm laden und Anfrage senden.</a><br><br>
+            <br>
+            <br><br>
+            <br><br>
+        </p>
+        <script>
+            function p01()
+            {
+                parent.program="p(1).\np(2).\np(3).\n";
+                parent.document.form1.goal.value="p(A).";
+                parent.askProlog("getClauseList",null);
+                parent.send_query();
+            }
+            function p02()
+            {
+                parent.program="p(1).\np(2).\np(3).\n";
+                parent.document.form1.goal.value="p(A),p(B).";
+                parent.askProlog("getClauseList",null);
+                parent.send_query();
+            }
+            function p03()
+            {
+                parent.program="p(1).\np(2).\np(X):-p(1).\n";
+                parent.document.form1.goal.value="p(A).";
+                parent.askProlog("getClauseList",null);
+                parent.send_query();
+            }
+            function p04()
+            {
+                parent.program="p(1).\np(2).\np(X):-p(1).\n";
+                parent.document.form1.goal.value="p(A),p(B),p(C).";
+                parent.askProlog("getClauseList",null);
+                parent.send_query();
+            }
+            function p05()
+            {
+                parent.program="p(X):-q(1).\np(1).\np(2).\np(X):-p(2).\np(X):-p(0).\n\nq(X):-p(1).\nq(1).\nq(2).\n";
+                parent.document.form1.goal.value="p(A).";
+                parent.askProlog("getClauseList",null);
+                parent.send_query();
+            }
+        </script>
+	</body>
+</html>

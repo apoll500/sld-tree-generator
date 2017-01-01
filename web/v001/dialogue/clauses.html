@@ -1,0 +1,94 @@
+<!--
++------------------------------------------------------------------------------+
+|                                                                              |
+|  clauses.html                                                                |
+|                                                                              |
+|  This file is part of "sld-tree-generator". (this program)                   |
+|                                                                              |
++------------------------------------------------------------------------------+
+|                                                                              |
+|  Copyright (C) 2016 by Andreas Pollhammer                                    |
+|                                                                              |
+|  Email: apoll500@gmail.com                                                   |
+|  Web:   http://www.andreaspollhammer.com                                     |
+|                                                                              |
++------------------------------------------------------------------------------+
+|                                                                              |
+|  Licensed under GPLv3:                                                       |
+|                                                                              |
+|  This program is free software: you can redistribute it and/or modify        |
+|  it under the terms of the GNU General Public License as published by        |
+|  the Free Software Foundation, either version 3 of the License, or           |
+|  (at your option) any later version.                                         |
+|                                                                              |
+|  This program is distributed in the hope that it will be useful,             |
+|  but WITHOUT ANY WARRANTY; without even the implied warranty of              |
+|  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the               |
+|  GNU General Public License for more details.                                |
+|                                                                              |
+|  You should have received a copy of the GNU General Public License           |
+|  along with this program.  If not, see <http://www.gnu.org/licenses/>.       |
+|                                                                              |
++------------------------------------------------------------------------------+
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
+    <script>
+      var offsetx=0;
+      var offsety=0;
+      function pwin_mc(evt)
+      {
+        var x=offsetx+evt.clientX+document.body.scrollLeft;
+        var y=offsety+evt.clientY+document.body.scrollTop;
+        parent.movecontrol2_sub(x,y);
+      }
+      function pwin_lmbup(evt)
+      {
+      }
+    </script>
+  </head>
+  <body onunload="unregister()" bgcolor="#000000" color="#000000" style="margin-left:0px;margin-top:0px;color:#000000;background-color:#000000;">
+    <div onMousemove="pwin_mc(event)" onMouseUp="pwin_lmbup(event)" style="position:absolute;width:100%;height:100%;">
+      <script src="../parser/dfa.js"></script>
+      <script src="../parser/reader.js"></script>
+      <script src="../parser/treepars.js"></script>
+    <div id="top" style="padding:10px;">
+	  <div style="margin-bottom:7px;color:#DDDDEE;font-size:18pt;font-family:arial;">Programm</div>
+      <nobr>
+        <a class="nav2" href="JavaScript:getClauseList();">aktualisieren</a>&nbsp;
+        <a class="nav2" href="JavaScript:edit_program();">bearbeiten</a>
+      </nobr>
+    </div>
+
+    <div id="ProcessingCanvas2">
+      <script src="../canvas/processing/processing.js"></script>
+      <canvas id="clist_canvas" data-processing-sources="clist.pde ../canvas/treedata/treedata.pde ../canvas/animation/properties.pde ../canvas/animation/animator.pde ../canvas/treedata/posnodes.pde ../canvas/math/math.pde"></canvas>
+    </div>
+    </div>
+    
+    <script>
+      var globalGraphicParameter;
+      
+      function getClauseList()
+      {
+          parent.askProlog("getClauseList",null);
+      }
+      function unregister()
+      {
+          parent.global_DOM_clauses_win=null;
+      }
+      parent.global_DOM_clauses_win=this;
+      
+      //getClauseList();
+      
+      function edit_program()
+      {
+          parent.openbox("Programm eingeben","../dialogue/program.html",160,100,600,400,"#4C391E","#CCCCCC","#CCCCCC","#CCCCCC");
+      }
+    </script>
+    
+  </body>
+</html>

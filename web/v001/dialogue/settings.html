@@ -1,0 +1,157 @@
+<!--
++------------------------------------------------------------------------------+
+|                                                                              |
+|  settings.html                                                               |
+|                                                                              |
+|  This file is part of "sld-tree-generator". (this program)                   |
+|                                                                              |
++------------------------------------------------------------------------------+
+|                                                                              |
+|  Copyright (C) 2016 by Andreas Pollhammer                                    |
+|                                                                              |
+|  Email: apoll500@gmail.com                                                   |
+|  Web:   http://www.andreaspollhammer.com                                     |
+|                                                                              |
++------------------------------------------------------------------------------+
+|                                                                              |
+|  Licensed under GPLv3:                                                       |
+|                                                                              |
+|  This program is free software: you can redistribute it and/or modify        |
+|  it under the terms of the GNU General Public License as published by        |
+|  the Free Software Foundation, either version 3 of the License, or           |
+|  (at your option) any later version.                                         |
+|                                                                              |
+|  This program is distributed in the hope that it will be useful,             |
+|  but WITHOUT ANY WARRANTY; without even the implied warranty of              |
+|  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the               |
+|  GNU General Public License for more details.                                |
+|                                                                              |
+|  You should have received a copy of the GNU General Public License           |
+|  along with this program.  If not, see <http://www.gnu.org/licenses/>.       |
+|                                                                              |
++------------------------------------------------------------------------------+
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
+  </head>
+  <body bgcolor="#FFFFFF" color="#000000" style="color:#000000;background-color:#FFFFFF;">
+    <h1>Einstellungen:</h1>
+    <form name="form1">
+      <p>
+        <b>Maximale Tiele des Baumes (bzw. Teilbaumes):</b><br>
+        Max. Tiefe (je Berechnungsschritt):
+        <select name="depth" onChange="selectDepth()" style="font-family:arial;font-size:12pt;">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+      </p>
+      <hr>
+      <p>
+        <b>Darstellung:</b><br>
+        Umrandung (und Knoten-Hintergrund) anzeigen.
+        <select name="draw_goal_box" onChange="select_draw_goal_box()" style="font-family:arial;font-size:12pt;">
+          <option value="1">ein</option>
+          <option value="0">aus</option>
+        </select>
+        <br><br>
+        Nummer der ausgewählten Klausel anzeigen.
+        <select name="draw_clauseid" onChange="select_draw_clauseid()" style="font-family:arial;font-size:12pt;">
+          <option value="1">ein</option>
+          <option value="0">aus</option>
+        </select>
+        <br><br>
+        Farbschema auswählen:
+        <select name="colorstyle" onChange="select_colorstyle()" style="font-family:arial;font-size:12pt;">
+          <option value="0">(select)</option>
+          <option value="1">standard</option>
+          <option value="2">simple</option>
+          <option value="3">black</option>
+          <option value="4">black2</option>
+        </select><br>(Setzt andere Einstellungen teilweise zurück.)
+        <br><br>
+        Substitution parallel zur Kante.
+        <select name="rotate_substext" onChange="select_rotate_substext()" style="font-family:arial;font-size:12pt;">
+          <option value="1">ein</option>
+          <option value="0">aus</option>
+        </select>
+        <br><br>
+        Substitution ausblenden.
+        <select name="draw_subst" onChange="select_draw_subst()" style="font-family:arial;font-size:12pt;">
+          <option value="1">ausgeblendet</option>
+          <option value="0">nicht ausgeblendet</option>
+        </select>
+      </p>
+      <hr>
+      <p>
+        <b>Mouse Interaktion:</b><br>
+        Erlaube Knoten horizontal zu verschieben.
+        <select name="allow_xdrag" onChange="select_allow_xdrag()" style="font-family:arial;font-size:12pt;">
+          <option value="1">ein</option>
+          <option value="0">aus</option>
+        </select>
+      </p>
+    </form>
+    <script>
+      this.document.form1.depth.selectedIndex=Number(parent.depth)-1;
+      if(parent.globalGraphicParameter.draw_goal_box)this.document.form1.draw_goal_box.value="1";else this.document.form1.draw_goal_box.value="0";
+      if(parent.globalGraphicParameter.draw_clauseid)this.document.form1.draw_clauseid.value="1";else this.document.form1.draw_clauseid.value="0";
+      if(parent.globalGraphicParameter.rotate_substext)this.document.form1.rotate_substext.value="1";else this.document.form1.rotate_substext.value="0";
+      if(parent.globalGraphicParameter.draw_subst)this.document.form1.draw_subst.value="0";else this.document.form1.draw_subst.value="1";
+      if(parent.globalGraphicParameter.allow_xdrag)this.document.form1.allow_xdrag.value="1";else this.document.form1.allow_xdrag.value="0";
+      function selectDepth()
+      {
+          parent.depth=this.document.form1.depth.selectedIndex+1;
+      }
+      function select_draw_goal_box()
+      {
+          if(this.document.form1.draw_goal_box.value=="1")parent.globalGraphicParameter.draw_goal_box=true;else parent.globalGraphicParameter.draw_goal_box=false;
+      }
+      function select_draw_clauseid()
+      {
+          if(this.document.form1.draw_clauseid.value=="1")parent.globalGraphicParameter.draw_clauseid=true;else parent.globalGraphicParameter.draw_clauseid=false;
+      }
+      function select_rotate_substext()
+      {
+          if(this.document.form1.rotate_substext.value=="1")parent.globalGraphicParameter.rotate_substext=true;else parent.globalGraphicParameter.rotate_substext=false;
+      }
+      function select_draw_subst()
+      {
+          if(this.document.form1.draw_subst.value=="0")parent.globalGraphicParameter.draw_subst=true;else parent.globalGraphicParameter.draw_subst=false;
+      }
+      function select_allow_xdrag()
+      {
+          if(this.document.form1.allow_xdrag.value=="1")parent.globalGraphicParameter.allow_xdrag=true;else parent.globalGraphicParameter.allow_xdrag=false;
+      }
+      function select_colorstyle()
+      {
+          if(this.document.form1.colorstyle.value=="1")
+          {
+              parent.globalGraphicParameter.set_standard();
+          }
+          else if(this.document.form1.colorstyle.value=="2")
+          {
+              parent.globalGraphicParameter.set_simple();
+          }
+          else if(this.document.form1.colorstyle.value=="3")
+          {
+              parent.globalGraphicParameter.set_black();
+          }
+          else if(this.document.form1.colorstyle.value=="4")
+          {
+              parent.globalGraphicParameter.set_black2();
+          }
+      }
+    </script>
+  </body>
+</html>

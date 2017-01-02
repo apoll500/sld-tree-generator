@@ -1,14 +1,21 @@
 # SLD-Tree-Generator
 
+    This program is aimed at calculation and display of sld-trees.
+    
+    Please note, that this is still work in progress. If you are looking for
+    reusable code or a well developed software product, you might want to wait
+    some time until development progresses. Nevertheless, Your comments and
+    feedback are very much appreciated.
+
 --------------------------------------------------------------------------------
-HOW TO RUN THE SLD-TREE GENERATOR:
+## How to run the sld-tree-benerator:
 --------------------------------------------------------------------------------
 
 The following steps show how to run the sld-tree generator as web-application
 on your localhost.
 
 --------------------------------------------------------------------------------
-Setup:
+### Setup:
 --------------------------------------------------------------------------------
 
 (0) Install SWI-Prolog, if it's not allready installed.
@@ -20,11 +27,12 @@ See http://www.swi-prolog.org/ for more information.
 $ cd extern/
 $ swipl download.pl
 
-If the download failes, you can also manually download the file processing.js
-from http://processingjs.org/download/ and copy it to processing/processing.js.
+If the download failes, you can also manually download
+the file processing.js from http://processingjs.org/download/
+and copy it to extern/processing/processing.js.
 
 --------------------------------------------------------------------------------
-Run the SLD-Generator:
+### Run the SLD-Generator:
 --------------------------------------------------------------------------------
 
 (1) Load and compile the sld-tree generator.

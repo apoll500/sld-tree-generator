@@ -34,11 +34,13 @@
 :-use_module(library(http/http_ssl_plugin)).
 
 download:-
-    http_open('https://raw.githubusercontent.com/processing-js/processing-js/v1.4.8/processing.js',In,[]),
-    open('processing/processing.js',write,_Fd,[alias(output)]),
+    File='https://raw.githubusercontent.com/processing-js/processing-js/v1.4.8/processing.js',
+    write('downloading '),write(File),write(' ...'),
+    http_open(File,In,[]),
+    open('extern/processing/processing.js',write,_Fd,[alias(output)]),
     copy_stream_data(In,output),
+    write(' OK'),nl,
     close(output),
     close(In).
     
 :-download.
-:-halt.

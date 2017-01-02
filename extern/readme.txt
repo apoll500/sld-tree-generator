@@ -2,11 +2,10 @@
 Installation of required Modules:
 --------------------------------------------------------------------------------
 
-To download the required files run this command:
+If required Files are missing, they are downloaded automatically when running
+sld.pl. (The download is performed by extern/download.pl)
 
-$ swipl download.pl
-
-This will download the following modules (it's only one).
+Here is a list of all required modules (it's only one).
 
 --------------------------------------------------------------------------------
 (1) processing.js
@@ -18,5 +17,6 @@ Lizense:      https://github.com/processing-js/processing-js/blob/master/bundle/
 Authors:      https://github.com/processing-js/processing-js/blob/master/bundle/AUTHORS
 --------------------------------------------------------------------------------
 
-If the download failes, you can also manually download the file processing.js
-from http://processingjs.org/download/ and copy it to processing/processing.js.
+If the download fails, you can also manually download the
+file processing.js from http://processingjs.org/download/
+and copy it to extern/processing/processing.js.

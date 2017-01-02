@@ -4,7 +4,7 @@
     
     Please note, that this is still work in progress. If you are looking for
     reusable code or a well developed software product, you might want to wait
-    some time until development progresses. Nevertheless, Your comments and
+    some time until development progresses. Nevertheless, your comments and
     feedback are very much appreciated.
 
 --------------------------------------------------------------------------------
@@ -18,32 +18,25 @@ on your localhost.
 ### Setup:
 --------------------------------------------------------------------------------
 
-(0) Install SWI-Prolog, if it's not allready installed.
+    0. Install SWI-Prolog, if it's not allready installed.
+       See http://www.swi-prolog.org/ for more information.
 
-See http://www.swi-prolog.org/ for more information.
-
-(1) Run the following to automatically download required modules/libraries.
-
-$ cd extern/
-$ swipl download.pl
-
-If the download failes, you can also manually download
-the file processing.js from http://processingjs.org/download/
-and copy it to extern/processing/processing.js.
+    1. When you run sld-tree-generator for the first time,
+       it will download processing.js. (See extern/readme.txt)
 
 --------------------------------------------------------------------------------
 ### Run the SLD-Generator:
 --------------------------------------------------------------------------------
 
-(1) Load and compile the sld-tree generator.
+    1. Load and compile the sld-tree generator.
 
-$ swipl sld.pl
+       $ swipl sld.pl
 
-(2) Run SWI-Prologs built-in http-server.
+    2. Run SWI-Prologs built-in http-server.
 
-?- start.
+       ?- start.
 
-(3) Open http://localhost:5000/sld/ in your web-browser.
+    3. Open http://localhost:5000/sld/ in your web-browser.
 
 Note that all the files (html, js, pde and css) served by swi-prolog will be
 available publicly, while requests for generating sld-trees will only work from

@@ -8,7 +8,7 @@
     feedback are very much appreciated.
 
 --------------------------------------------------------------------------------
-## How to run the sld-tree-benerator:
+## How to run the sld-tree-generator:
 --------------------------------------------------------------------------------
 
 The following steps show how to run the sld-tree generator as web-application

@@ -35,7 +35,7 @@ function receive(text)
 
 function about()
 {
-    httpGetAsync("http://localhost:5000/prolog?e=event(65)",alert);
+    httpGetAsync("http://"+this.location.host+"/prolog?e=event(65)",alert);
 }
 
 function goalButtonSubmit()
@@ -48,7 +48,7 @@ function goalButtonSubmit()
     {
         program=program.replace("\n","\\n");
     }
-    httpGetAsync("http://localhost:5000/prolog?e=event(asciiTree,goal('"+goal+"'),program('"+program+"'),depth("+depth+"))",showTree);
+    httpGetAsync("http://"+this.location.host+"/prolog?e=event(asciiTree,goal('"+goal+"'),program('"+program+"'),depth("+depth+"),0)",showTree);
 }
 
 function showTree(tree)

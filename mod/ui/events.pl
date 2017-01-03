@@ -55,7 +55,7 @@ ui_event(event(65)):-
 %        load.
 
 % ------------------------------------------------------------------------------
-% ui_event/2
+% ui_event/1
 % ------------------------------------------------------------------------------
 ui_event(event(asciiTree,goal(Goal),program(Program),depth(Depth),_PC)):-
     load_program_A(Program,_,_),

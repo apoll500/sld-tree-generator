@@ -41,10 +41,6 @@
         <div class="topbox"><a href="info.html">Startseite</a> | <a href="help.html">Anleitung</a> | <a href="contact.html">Kontakt</a></div>
 		<h1>Anleitung (Web-Applikation)</h1>
 		<p>
-			Hier finden Sie eine kurze Anleitung, wie Sie mit diesem Web-Interface SLD-Bäume generieren und anzeigen lassen können. Sollten Sie weitergehende Fragen haben, kontaktieren Sie mich bitte <a href="contact.html">hier</a>.
-            <br><br>
-			Die aktuelle Dokumentation finden Sie im Ordner <code><b>docu/</b></code>.
-		</p>
             <div class="infobox">
                 <b>Berechnung und Anzeige von SLD-Bäumen</b>
                 <br><br>
@@ -55,14 +51,21 @@
                 Schritt 3: <a href="step3.html">Navigation durch den SLD-Baum</a>
                 <br>
             </div>
-            <div class="infobox">
-                <b>Steurung der Web-Applikation:</b>
-                <br><br>
-                <a href="keys.html">Tastaturbefehle</a>
-                <br>
-                <a href="mouse.html">Mouse-Interaktion</a>
-                <br>
-            </div>
+		<p>
+		<h3>Schritt 3 - Navigation durch den SLD-Baum</h3>
+		<p>
+			Die Interaktion ist sowohl mittels Mouse als auch mit der Tastatur möglich. Eine vollständige Liste aller Tastaturbefehle finden Sie <a href="">hier</a>.
+		</p>
+		<h4>Einen Knoten auswählen:</h4>
+		<p>
+			Ein Knoten des SLD-Baumes wird jeweils rot umrandet dargestellt. Es ist dies der aktuell ausgewählte Knoten. Sie können einen beliebigen anderen Knoten auswählen, indem Sie mit der Mouse auf den gewünschten Knoten klicken. Mit der Tastatur können Sie die Pfeiltasten benutzen, um einen anderen Knoten auszuwählen.
+			<div class ="mybox">Die Taste <span class="skey">UP</span> bewegt die rote Umrandung zum übergeordneten Knoten (Elternknoten).</div>
+			<div class ="mybox">Mit der Taste <span class="skey">DOWN</span> wechseln Sie zum ersten (linkesten) Kind eines Knoten.</div>
+			<div class ="mybox">Und mit den Tasten <span class="skey">LEFT</span> und <span class="skey">RIGHT</span> können Sie innerhalb einer Ebene zum jeweils linken bzw. rechten Nachbarknoten wechseln.</div>
+		</p>
+		<h4>Teilbäume berechnen:</h4>
+		<p>
+			Um einen fehlenden Teilbaum (Teil-Abschnitt) des SLD-Baumes zu berechnen können Sie den betreffenden Blattknoten (<span class="lnode">&nbsp;&nbsp;&nbsp;&nbsp;. . .</span>) doppelt anklicken.<br><br>Oder Sie navigieren mit der Tastatur zu diesem Knoten und drücken entweder die <span class="skey">ENTER</span>-Taste oder die Pfeiltaste <span class="skey">DOWN</span>.
 		</p>
 	</body>
 </html>

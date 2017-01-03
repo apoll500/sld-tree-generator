@@ -81,6 +81,9 @@
 :-http_handler('/sld/help/mouse.html',                  http_reply_file('web/v001/help/mouse.html',[]),[]).
 :-http_handler('/sld/help/contact.html',                http_reply_file('web/v001/help/contact.html',[]),[]).
 :-http_handler('/sld/help/examples.html',               http_reply_file('web/v001/help/examples.html',[]),[]).
+:-http_handler('/sld/help/step1.html',                  http_reply_file('web/v001/help/step1.html',[]),[]).
+:-http_handler('/sld/help/step2.html',                  http_reply_file('web/v001/help/step2.html',[]),[]).
+:-http_handler('/sld/help/step3.html',                  http_reply_file('web/v001/help/step3.html',[]),[]).
 :-http_handler('/sld/images/home.png',                  http_reply_file('web/v001/images/home.png',[]),[]).
 :-http_handler('/sld/jsmain/http.js',                   http_reply_file('web/v001/jsmain/http.js',[]),[]).
 :-http_handler('/sld/jsmain/js_events.js',              http_reply_file('web/v001/jsmain/js_events.js',[]),[]).

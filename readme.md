@@ -14,6 +14,8 @@
 The following steps show how to run the sld-tree generator as web-application
 on your localhost.
 
+![alt text](http://www.andreaspollhammer.com/images/sh400/sld.png "Screenshot 400x215")
+
 --------------------------------------------------------------------------------
 ### Setup:
 --------------------------------------------------------------------------------

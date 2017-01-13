@@ -112,6 +112,9 @@
 :-http_handler('/sld/pwin/images/simple/ibg.png',       http_reply_file('web/v001/pwin/images/simple/ibg.png',[]),[]).
 :-http_handler('/sld/pwin/images/circle3.gif',          http_reply_file('web/v001/pwin/images/circle3.gif',[]),[]).
 
+% Documentation
+:-http_handler('/sld/docu/webui.pdf',                   http_reply_file('docu/webui.pdf',[]),[]).
+
 % This redirects all requests for /prolog to predicate main.
 :-http_handler('/prolog',main,[]).
 

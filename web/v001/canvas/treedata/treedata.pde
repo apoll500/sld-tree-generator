@@ -92,18 +92,18 @@ class InfoWin
         if(globalSelectedSubstSubtree)
         {
             fill(globalGraphicParameter.infotext_color);
-            text("Substitution:",posX+3,posY+globalGraphicParameter.fontSize());
+            text(gttext["info_subs"]+":",posX+3,posY+globalGraphicParameter.fontSize());
             float w=globalSelectedSubstSubtree.node.draw_subs_i(posX+3,posY+globalGraphicParameter.fontSize()*2);
             height=max(globalGraphicParameter.scale*70,globalGraphicParameter.fontSize()*(globalSelectedSubstSubtree.node.unificator.length+2));
-            width=max(textWidth("Substitution:"),w)+6;
+            width=max(textWidth(gttext["info_subs"]+":"),w)+6;
         }
         else if(globalSelectedSubtreeRequest && answer)
         {
             fill(globalGraphicParameter.infotext_color);
-            text("Antwort:",posX+3,posY+globalGraphicParameter.fontSize());
+            text(gttext["info_answ"]+":",posX+3,posY+globalGraphicParameter.fontSize());
             float w=answer.draw(posX+3,posY+globalGraphicParameter.fontSize()*2)-posX-3;
             height=max(globalGraphicParameter.scale*70,globalGraphicParameter.fontSize()*(globalSelectedSubtreeRequest.node.unificator.length+2));
-            width=max(textWidth("Antwort:"),w)+6;
+            width=max(textWidth(gttext["info_answ"]+":"),w)+6;
         }
     }
     boolean inside(int x,int y)
@@ -484,7 +484,7 @@ class Substitution
     }
     void prompt()
     {
-        alert("Substitution: "+variable.name+"_"+variable.index+"="+term);
+        alert(gttext["info_subs"]+": "+variable.name+"_"+variable.index+"="+term);
     }
     int draw(int x,int y)
     {
@@ -552,14 +552,14 @@ class Clause
         int x=10;
         int y=screeny-100+fontsize;
         
-        text("Ausgewählte Klausel: ",x,y);
-        x+=textWidth("Ausgewählte Klausel: ");
+        text(gttext["info_clau"]+": ",x,y);
+        x+=textWidth(gttext["info_clau"]+": ");
         if(id)text(id,x,y);
         
         x=10;
         y+=fontsize;
-        text("Variante: ",x,y);
-        x+=textWidth("Variante: ");
+        text(gttext["info_vari"]+": ",x,y);
+        x+=textWidth(gttext["info_vari"]+": ");
         if(id)x+=clause.draw(x,y);
         
         //x=10;
@@ -661,8 +661,8 @@ class Node
             
             if(t.parenttree)
             {
-                text("Vorhergehendes Ziel: ",10,screeny-100);
-                float w=textWidth("Vorhergehendes Ziel: ?- ");
+                text(gttext["info_prev"]+": ",10,screeny-100);
+                float w=textWidth(gttext["info_prev"]+": ?- ");
                 t.parenttree.node.goal.draw(10+w,screeny-100);
             }
         
@@ -671,14 +671,14 @@ class Node
             float xs=10;
             float ys=screeny-100+fontsize*3;
             fill(globalGraphicParameter.infotext_color);
-            text("Substitution: [",xs,ys);
-            xs+=textWidth("Substitution: [");
+            text(gttext["info_subs"]+": [",xs,ys);
+            xs+=textWidth(gttext["info_subs"]+": [");
             xs=draw_subs0(xs,ys);
             fill(globalGraphicParameter.infotext_color);
             text("]",xs,ys);
 
-            text("Neues Ziel: ",10,screeny-100+fontsize*4);
-            w=textWidth("Neues Ziel: ?- ");
+            text(gttext["info_next"]+": ",10,screeny-100+fontsize*4);
+            w=textWidth(gttext["info_next"]+": ?- ");
             goal.draw(10+w,screeny-100+fontsize*4);
         }
         

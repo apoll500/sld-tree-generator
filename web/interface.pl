@@ -115,6 +115,10 @@
 % Documentation
 :-http_handler('/sld/docu/webui.pdf',                   http_reply_file('docu/webui.pdf',[]),[]).
 
+% Translations
+:-http_handler('/sld/lang/de-at.js',                   http_reply_file('web/v001/lang/de-at.js',[]),[]).
+:-http_handler('/sld/lang/en-us.js',                   http_reply_file('web/v001/lang/en-us.js',[]),[]).
+
 % This redirects all requests for /prolog to predicate main.
 :-http_handler('/prolog',main,[]).
 

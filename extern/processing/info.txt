@@ -1,0 +1,2 @@
+# processing.js should be placed here:
+# extern/processing/processing.js.
